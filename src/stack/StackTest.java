@@ -21,11 +21,7 @@ public class StackTest {
 
         Box<String, Integer> box = new Box ("Jakiś tekst", 40); // po dodaniu <> po new Box nie przyjmie innego typu
         Box<Integer, String> box2 = new Box (172, "tekst "); // mozemy przechowywac rozne typy danych w jednej klasie
-        System.out.println(box.getElement());
-        System.out.println(box2.getElement());
-        System.out.println(box2.getElement());
-        System.out.println(box2.getElement());
-        System.out.println(box2.getElement());
+
 
     }
 }
