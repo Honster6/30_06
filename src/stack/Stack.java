@@ -2,18 +2,18 @@ package stack;
 
 import java.util.EmptyStackException;
 
-public class Stack {
+public class Stack < T >{
 
-    private int[] stack;
-    private Integer top;
+    private T [] stack;
+    private T top;
     private int size;
 
-    public Stack(Integer size) {
-        stack = new int[size];
+    public Stack(int size) {
+        stack = (T[]) new Object[size];
         this.size = 0;
     }
 
-    public void push(Integer element) {
+    public void push(T element) {
         if (size != stack.length) {
             stack[size++] = element;
             top = element; //ostatni element
@@ -22,7 +22,7 @@ public class Stack {
         }
     }
 
-    public Integer peek() {
+    public T peek() {
         if (!isEmpty()) {
             return top;
         } else {
@@ -30,7 +30,7 @@ public class Stack {
         }
     }
 
-    public Integer pop() {
+    public T pop() {
         if (isEmpty()) {
             size--;
             if (size ==0) {

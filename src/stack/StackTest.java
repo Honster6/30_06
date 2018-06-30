@@ -23,5 +23,6 @@ public class StackTest {
         Box<Integer, String> box2 = new Box (172, "tekst "); // mozemy przechowywac rozne typy danych w jednej klasie
 
 
+
     }
 }
