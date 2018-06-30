@@ -1,8 +1,10 @@
 package stack;
 
+import java.lang.reflect.Array;
+
 public class StackTest {
     public static void main(String[] args) {
-       /* Stack stack = new Stack <>(10); // w <np. Integer - tylko liczby> podajemy jaki typ ma przyjac, jesli nie podamy nic to przyjmie wszystko
+        ArrayStack stack = new ArrayStack<>(10); // w <np. Integer - tylko liczby> podajemy jaki typ ma przyjac, jesli nie podamy nic to przyjmie wszystko
         System.out.println("Is empty: " + stack.isEmpty()); // sprawdzamy czy stos jest pusty
         stack.push(9); // dolozenie elementu do stosu
         System.out.println("Is empty: " + stack.isEmpty()); //po dolozeniu elementu stos nie jest pusty
@@ -21,7 +23,7 @@ public class StackTest {
 
         Box<String, Integer> box = new Box ("Jakiś tekst", 40); // po dodaniu <> po new Box nie przyjmie innego typu
         Box<Integer, String> box2 = new Box (172, "tekst "); // mozemy przechowywac rozne typy danych w jednej klasie
-        */
+
 
         LinkedStack linked = new LinkedStack();
         linked.push(10);

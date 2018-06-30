@@ -2,13 +2,13 @@ package stack;
 
 import java.util.EmptyStackException;
 
-public class Stack < T >{
+public class ArrayStack < T >{
 
     private T [] stack;
     private T top;
     private int size;
 
-    public Stack(int size) {
+    public ArrayStack(int size) {
         stack = (T[]) new Object[size];
         this.size = 0;
     }
