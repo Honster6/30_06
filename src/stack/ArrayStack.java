@@ -2,7 +2,7 @@ package stack;
 
 import java.util.EmptyStackException;
 
-public class ArrayStack < T >{
+public class ArrayStack < T > implements Stack{
 
     private T [] stack;
     private T top;
@@ -22,7 +22,7 @@ public class ArrayStack < T >{
         }
     }
 
-    public T peek() {
+    public T peek() { // zwraca daną wartość, ale nie zdejmuje jej ze stosu
         if (!isEmpty()) {
             return top;
         } else {
@@ -30,7 +30,7 @@ public class ArrayStack < T >{
         }
     }
 
-    public T pop() {
+    public T pop() { // rozni sie od peek tym, ze "zdejmuje" dana wartosc ze stosu
         if (isEmpty()) {
             size--;
             if (size ==0) {
@@ -47,6 +47,7 @@ public class ArrayStack < T >{
     }
 
     public boolean isEmpty() {
+
         return size == 0; //sprawdzenie czy stos jest pusty
     }
 
