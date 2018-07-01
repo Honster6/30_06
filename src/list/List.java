@@ -57,6 +57,7 @@ public class List {
         }
         return currentElement;
     }
+
     public int get(int index) {
         return findElement(index).value;
     }
@@ -73,9 +74,25 @@ public class List {
     }*/
 
 
-    public int remove() {
+    public int remove(int index) {
+        ListElement elementToRemove = findElement(index);
+        if (size == 1) {
+            first = last = null;
+        }  else if (index == 0) {
+            first = first.nextElement;
+            first.previousElement = null;
+        } else if (index == size - 1) {
+            last = last.previousElement;
+            last.nextElement = null;
+        } else {
+            ListElement prev = elementToRemove.previousElement;
+            ListElement next = elementToRemove.nextElement;
+            prev.nextElement = next;
+            next.previousElement = prev;
+        }
+        size--;
+        return elementToRemove.value;
 
-        return 0;
     }
 
     public int getSize() {
