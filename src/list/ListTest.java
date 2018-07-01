@@ -9,14 +9,26 @@ public class ListTest {
         list.add(17); // 4
         list.add(25); // 5
         list.add(13); // 6
-        System.out.println(list.getSize());
+        list.add(456); // 7
+        System.out.println("Przed dodaniem nowego elementu na wybraną pozycję: " + list.getSize());
         //System.out.println("Poycja w liście: "  + list.get(1));
         //System.out.println("Poycja w liście: "  + list.get(2));
         //System.out.println("Pozycja w liście " + list.get(3));
         //System.out.println("Pojedyńcza pozycja: " + list.get(4));
-        for (int i = 1; i <= list.getSize(); i++) {
+        /*for (int i = 0; i < list.getSize(); i++) {
             System.out.println("Pozycja nr: " + i + " - " + list.get(i));
         }
+        System.out.println(list.get(2)); // indexy zaczynaja sie od zera*/
+
+        list.add(5, 999);
+        System.out.println("Po dodaniu nowego elementu na wybraną pozycję: " + list.getSize());
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println("Pozycja nr: " + i + " - " + list.get(i));
+        }
+
+
+
+
 
 
 

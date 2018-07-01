@@ -1,6 +1,6 @@
 package list;
 
-class List {
+public class List {
     private ListElement first;
     private ListElement last;
     private int size;
@@ -13,7 +13,7 @@ class List {
 
     }
 
-    public void add(int element) {
+    public void add(int element) { // można miec dwie metody o tej samej nazwie, program sprawdza po ilosci argumentów
         ListElement current = new ListElement(element);
         if (isEmpty()) {
             last = first = current;
@@ -25,31 +25,67 @@ class List {
         size++;
     }
 
-    public void add(int index, int element) {
+    public void add(int index, int value) {
+        if (isEmpty() || index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        ListElement newElement = new ListElement(value);
+        if (index == 0) {
+
+            first.previousElement = newElement;
+            newElement.nextElement = first;
+            first = newElement;
+        } else {
+            ListElement elementUnderIndex = findElement(index);
+            ListElement previousElemUnderIndex = elementUnderIndex.previousElement;
+            previousElemUnderIndex.nextElement = newElement;
+            newElement.previousElement = previousElemUnderIndex;
+            newElement.nextElement = elementUnderIndex;
+            elementUnderIndex.previousElement = newElement;
+        }
+        size++;
 
     }
 
-    public int get(int n) {
+    private ListElement findElement(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        ListElement currentElement = first;
+        for (int i = 0; i < index; i++) {
+            currentElement = currentElement.nextElement;
+        }
+        return currentElement;
+    }
+    public int get(int index) {
+        return findElement(index).value;
+    }
+
+    /*public int get(int index) {
         int current = 0;
         int temp = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < index; i++) {
             if (temp == 0) {
                 current = first.value;
                 first = first.nextElement;
             } temp++;
         } return current;
-    }
+    }*/
+
 
     public int remove() {
+
         return 0;
     }
 
     public int getSize() {
+
         return size;
     }
 
 
     public boolean isEmpty() {
+
         return size == 0;
     }
 
