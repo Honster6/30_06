@@ -1,30 +1,16 @@
 package tree;
 
-public class BinaryTree {
+class BinaryTree {
 
     private Node root;
 
-
-    public BinaryTree(Node node) {
+    BinaryTree(Node node) {
         this.root = node;
-
     }
 
-    public void showTree()
-    {
-        preOrder(root);
+    void showTree(DfsType dfsType) {
+        System.out.print(dfsType.name() + ": ");
+        dfsType.showTree(root);
+        System.out.println();
     }
-    private void preOrder(Node node) {
-        if (node != null) {
-            visit(node);
-            preOrder((node.getLeftChild()));
-            preOrder(node.getRightChild());
-        }
-    }
-
-    private void visit(Node node) {
-        System.out.println(node.getValue());
-    }
-
-
 }

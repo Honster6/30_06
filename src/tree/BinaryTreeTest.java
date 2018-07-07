@@ -6,7 +6,7 @@ public class BinaryTreeTest {
         Node a = new Node("A", null, null);
         Node c = new Node("C", null, null);
         Node e = new Node("E", null, null);
-        Node h = new Node("E", null, null);
+        Node h = new Node("H", null, null);
         Node d = new Node ("D", c, e);
         Node b = new Node ("B", a, d);
         Node i = new Node("I", h, null);
@@ -15,7 +15,9 @@ public class BinaryTreeTest {
 
         BinaryTree tree = new BinaryTree(root);
 
-        tree.showTree(); // popeawic!!!!
+        tree.showTree(DfsType.PRE_ORDER);
+        tree.showTree(DfsType.IN_ORDER);
+        tree.showTree(DfsType.POST_ORDER);
 
     }
 }
