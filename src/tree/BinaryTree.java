@@ -13,4 +13,9 @@ class BinaryTree {
         dfsType.showTree(root);
         System.out.println();
     }
+
+
+    private void visit(Node node) {
+        System.out.println(node.getValue());
+    }
 }
