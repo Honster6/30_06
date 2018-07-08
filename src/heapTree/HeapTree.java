@@ -22,7 +22,7 @@ class HeapTree {
         tree[current] = value;
         }
 
-        public int remove () {
+    public int remove() {
         if (!hasNodes()) {
             throw new IndexOutOfBoundsException();
         }
@@ -31,17 +31,26 @@ class HeapTree {
         int greaterChildIndex = getGreaterChildIndex(0);
         int lastValue = tree[--lastIndex];
 
-        while (greaterChildIndex < lastIndex) {
-            if (tree[greaterChildIndex] > lastValue) {
-                tree[currentIndex] = tree[greaterChildIndex];
-                currentIndex = greaterChildIndex;
-                greaterChildIndex = getGreaterChildIndex(currentIndex);
-            }
+        while (greaterChildIndex < lastIndex && tree[greaterChildIndex] > lastValue) {
+            tree[currentIndex] = tree[greaterChildIndex];
+            currentIndex = greaterChildIndex;
+            greaterChildIndex = getGreaterChildIndex(currentIndex);
         }
         tree[currentIndex] = lastValue;
 
         return elementToRemove;
+    }
+
+        static int [] heapSort(int [] array) {
+        HeapTree heap = new HeapTree(array.length);
+        Arrays.stream(array).forEach(heap::add);
+        int [] sortedArray = new int [array.length];
+        for (int i = array.length - 1; heap.hasNodes(); i--) {
+            array[i] = heap.remove();
+        } return sortedArray;
         }
+
+
 
     private int getGreaterChildIndex(int index) {
             if (hasRightChild(index)) {
