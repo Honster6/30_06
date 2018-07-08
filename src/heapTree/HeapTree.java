@@ -2,12 +2,12 @@ package heapTree;
 
 import java.util.Arrays;
 
-class HeapTree{
+class HeapTree {
     private int[] tree;
     private int lastIndex;
 
     public HeapTree(int size) {
-        this.tree = new int [size];
+        this.tree = new int[size];
         this.lastIndex = 0;
     }
 
@@ -15,24 +15,50 @@ class HeapTree{
         int current = lastIndex++;
         int parent = current != 0 ? getParent(current) : 0;
         while (current > 0 && tree[parent] < value) {
-            tree [current] = tree [parent];
+            tree[current] = tree[parent];
             current = parent;
             parent = getParent(current);
         }
-        tree [current] = value;
+        tree[current] = value;
+        }
 
+        public int remove () {
+        if (!hasNodes()) {
+            throw new IndexOutOfBoundsException();
+        }
+        int elementToRemove = tree[0];
+        int currentIndex = 0;
+        int greaterChildIndex = getGreaterChildIndex(0);
+        int lastValue = tree[--lastIndex];
 
+        while (greaterChildIndex < lastIndex) {
+            if (tree[greaterChildIndex] > lastValue) {
+                tree[currentIndex] = tree[greaterChildIndex];
+                currentIndex = greaterChildIndex;
+                greaterChildIndex = getGreaterChildIndex(currentIndex);
+            }
+        }
+        tree[currentIndex] = lastValue;
+
+        return elementToRemove;
+        }
+
+    private int getGreaterChildIndex(int index) {
+            if (hasRightChild(index)) {
+                return getLeftChild(index) > getRightChild(index) ?
+                        getLeftChildIndex(index) : getRightChildIndex(index);
+            } else if (hasLeftChild(index)) {
+                return getLeftChildIndex(index);
+            } else {
+                return lastIndex + 1;
+            }
     }
-
-    public void insert(int value) {
-
+    private boolean hasRightChild(int index) {
+        return (2 * index + 2) < lastIndex;
     }
-
-    public void siftUp(int index) {
-
+    private boolean hasLeftChild(int index) {
+        return (2 * index + 1) < lastIndex;
     }
-
-
 
 
     int getLeftChild(int index) {
@@ -42,7 +68,6 @@ class HeapTree{
     int getRightChild(int index) {
         return tree[getRightChildIndex(index)];
     }
-
 
     int getLeftChildIndex(int index) {
         if (isLeftChild(index)) {
@@ -74,6 +99,9 @@ class HeapTree{
         } else {
             throw new IndexOutOfBoundsException();
         }
+    }
+    public boolean hasNodes() {
+        return lastIndex > 0;
     }
 
     boolean isLeaf(int index) {
